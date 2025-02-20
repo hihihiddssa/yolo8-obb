@@ -1,0 +1,10 @@
+path: D:/AMY_PROJECTS/yolo-dectect-teddy4/datasets_7d_x1y1  # 使用绝对路径 datasets_6d_cxcy
+train: train/images
+val: val/images
+
+# 类别数量和名称
+nc: 1  # 类别数量
+names: ['teddy']  # 类别名称
+
+# 是否启用OBB
+obb: True 

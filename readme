@@ -1,0 +1,27 @@
+
+使用annotator.py生成标注文件解释
+    格式：0 cx cy w h angle
+    读取rgb文件夹下的图片，生成标注文件，保存到labels文件夹下
+
+
+test_annotator.py：测试annotator.py生成的标注文件是否正确
+
+datasets_6d_cxcy目录解释
+    -labels:格式：0 cx cy w h angle
+
+
+datasets_7d_x1y1目录解释
+    -train
+        -images
+        -labels:格式：（类别，x1,y1,x2,y2,x3,y3,x4,y4）
+        例如：0 0.831431 0.090309 0.848098 0.456975 0.696693 0.463857 0.680026 0.097191
+
+    -val
+        -images
+        -labels
+
+
+rgb文件夹解释
+    -png是原始图片  
+    -txt是标注文件，格式以及转成（类别,x1,y1,x2,y2,x3,y3,x4,y4）格式
+ 
