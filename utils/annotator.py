@@ -3,8 +3,9 @@ import numpy as np
 import os
 import math
 
+'''
 #得到标注格式：0 cx cy w h angle
-
+'''
 class Annotator:
     def __init__(self, image_dir, save_dir, default_width=50):
         self.image_dir = image_dir

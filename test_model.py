@@ -37,8 +37,8 @@ def test_yolo_model(image_folder, model_path):
 
 if __name__ == "__main__":
     # 设置图片集文件夹路径和模型路径
-    image_folder_path = 'D:/AMY_PROJECTS/yolo-dectect-teddy4/datasets_7d_x1y1/train/images'
-    trained_model_path = 'D:/AMY_PROJECTS/yolo-dectect-teddy4/runs/train/exp3/weights/best.pt'
+    image_folder_path = 'datasets_7d_x1y1/train/images'
+    trained_model_path = 'runs/train/exp3/weights/best.pt'
     
     # 测试模型
     test_yolo_model(image_folder_path, trained_model_path) 
