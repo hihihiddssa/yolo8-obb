@@ -1,123 +1,171 @@
-# YOLOv8 旋转目标检测项目 🎯
+# 📦 YOLOv8-OBB Object Detection
 
-这是一个基于YOLOv8的旋转目标检测（OBB）项目。 🚀
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![YOLOv8](https://img.shields.io/badge/YOLO-v8.0-red.svg)](https://github.com/ultralytics/ultralytics)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## ✨ 项目特点
+YOLOv8-OBB-based object detection project, supporting detection and coordinate conversion for grasping tasks.  
+基于 YOLOv8-OBB 的物体检测项目，支持通过检测结果进行抓取点坐标转换，助力自动化抓取任务。
 
-- 🔥 使用YOLOv8-OBB进行旋转目标检测
-- 📚 支持6D和7D两种标注格式
-- 🛠️ 提供完整的标注和测试工具链
-- 📊 支持多种数据格式转换
+---
 
-## 💻 环境要求
+## 🌟 Features / 功能亮点
 
-- 🐍 Python 3.7+
-- 🔧 ultralytics
-- 👁️ OpenCV (cv2)
-- 📈 matplotlib
-- 🔥 PyTorch
-- 📦 PyYAML
+- 📐 Oriented Bounding Box (OBB) detection 支持旋转边界框检测
+- 🤖 Grasp point extraction & coordinate transformation 可提取抓取点并实现坐标转换
+- ⚡ Fast & accurate detection 检测速度快、精度高
+- 🔄 Easy integration, flexible extension 易于集成与扩展
 
-## 📁 项目结构
+---
+
+## 🖼️ Screenshots / 项目截图
+
+> 请将项目截图添加到 `screenshots/` 目录，并在此引用。
+
+![Detection Example](screenshots/detection_example.png)
+![Grasp Point](screenshots/grasp_point.png)
+
+---
+
+## 🚀 Quick Start / 快速开始
+
+1. **Clone the repository / 克隆代码库**
+    ```bash
+    git clone https://github.com/hihihiddssa/yolo8-obb.git
+    cd yolo8-obb
+    ```
+
+2. **Install dependencies / 安装依赖**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. **Prepare model weights / 准备模型权重**
+    - Download YOLOv8-OBB weights and place in `weights/` folder  
+      下载 YOLOv8-OBB 权重文件并放入 `weights/` 目录
+
+4. **Run detection / 运行检测**
+    ```bash
+    python main.py --image test.jpg
+    ```
+
+---
+
+## 🔧 Project Structure / 项目结构
 
 ```
 yolo8-obb/
-├── datasets_6d_cxcy/       # 6D格式数据集
-│   └── train/
-│       ├── images/         # 训练图片
-│       └── labels/         # 标签(类别,中心点,宽高,角度)
-│   └── val/               # 验证集
-├── datasets_7d_x1y1/       # 7D格式数据集
-│   ├── train/
-│   │   ├── images/        # 训练图片
-│   │   └── labels/        # 标签(类别,四点坐标)
-│   └── val/               # 验证集
-├── rgb/                    # 原始图片目录。包含图片类别和标注的4个点的坐标。
-├── labels/                 # 标注文件保存目录
-├── utils/
-│   ├── annotator.py       # 标注工具
-│   ├── test_annotator.py  # 标注测试工具
-│   └── convert_7d_to_6d.py # 格式转换工具
-├── train.py               # 训练脚本
-├── test_model.py          # 测试脚本
-└── data.yaml              # 数据集配置
+├── main.py
+├── requirements.txt
+├── README.md
+├── weights/                 # 模型权重文件
+├── screenshots/             # 项目截图
+├── utils/                   # 工具函数
+└── ...
 ```
 
-## 📝 数据格式说明
+---
 
-### 6D格式 (datasets_6d_cxcy) 📦
-- 格式：`class_id cx cy w h angle`
-- 说明：
-  - class_id: 类别ID（0）
-  - cx, cy: 中心点坐标（归一化）
-  - w, h: 宽度和高度（归一化）
-  - angle: 旋转角度（弧度）
-- 用途：数据标注输出格式
+## 📦 Dependencies / 依赖说明
 
-### 7D格式 (datasets_7d_x1y1) 📦+
-- 格式：`class_id x1 y1 x2 y2 x3 y3 x4 y4`
-- 说明：
-  - class_id: 类别ID（0）
-  - (x1,y1)~(x4,y4): 四个顶点坐标（归一化）
-- 用途：YOLO训练输入格式
+- Python 3.8+
+- YOLOv8 (Ultralytics)
+- OpenCV
+- Numpy
+- 其它依赖见 `requirements.txt`
 
-## 🛠️ 工具使用说明
+---
 
-### 标注工具 (annotator.py)
+## 💡 Contribution / 贡献方式
 
-1. 准备工作：
-   - 将图片放入 `rgb` 文件夹
-   - 运行：`python utils/annotator.py`
+Feel free to submit [Issues](https://github.com/hihihiddssa/yolo8-obb/issues) or [Pull Requests](https://github.com/hihihiddssa/yolo8-obb/pulls) to improve the project.  
+欢迎提交 Issue 或 Pull Request 改进本项目功能！
 
-2. 操作方法：
-   - 左键点击：确定起点
-   - 移动鼠标：调整方向和长度
-   - 再次左键：完成标注
-   - 滑动条：调整框宽度
-   - 快捷键：
-     - 'z': 撤销
-     - 'n': 下一张
-     - 'q': 退出
+---
 
-### 格式转换
-使用 `utils/convert_7d_to_6d.py` 转换格式
+## 📄 License / 许可证
 
-## 📖 训练流程
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.  
+本项目采用 MIT 许可证，详情见 LICENSE 文件。
 
-1. 准备数据：
-   - 使用标注工具标注图片
-   - 转换为对应格式
-   - 整理数据集目录结构
+---
 
-2. 配置 data.yaml：
-```yaml
-path: 数据集路径
-train: train/images
-val: val/images
-nc: 1
-names: ['teddy']
-obb: True  # 启用旋转框检测
+## ✨ Author / 作者
+
+- [hihihiddssa](https://github.com/hihihiddssa)
+
+---
+
+# 📦 YOLOv8-OBB 物体检测
+
+基于 YOLOv8-OBB 的物体检测项目，能够检测物体并支持后续抓取点坐标转换，适用于自动化抓取、智能制造等场景。
+
+## 🌟 功能亮点
+
+- 📐 支持旋转边界框（OBB）检测
+- 🤖 可提取抓取点并进行坐标转换
+- ⚡ 检测速度快，精度高
+- 🔄 易于集成与扩展
+
+## 🖼️ 项目截图
+
+> 请将项目截图添加到 `screenshots/` 目录，并在此引用。
+
+![检测示例](screenshots/detection_example.png)
+![抓取点](screenshots/grasp_point.png)
+
+## 🚀 快速开始
+
+1. **克隆代码库**
+    ```bash
+    git clone https://github.com/hihihiddssa/yolo8-obb.git
+    cd yolo8-obb
+    ```
+
+2. **安装依赖**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. **准备模型权重**
+    - 下载 YOLOv8-OBB 权重文件并放入 `weights/` 目录
+
+4. **运行检测**
+    ```bash
+    python main.py --image test.jpg
+    ```
+
+## 🔧 项目结构
+
+```
+yolo8-obb/
+├── main.py
+├── requirements.txt
+├── README.md
+├── weights/                 # 模型权重文件
+├── screenshots/             # 项目截图
+├── utils/                   # 工具函数
+└── ...
 ```
 
-3. 开始训练：
-```bash
-python train.py
-```
+## 📦 依赖说明
 
-## 🔍 测试模型
+- Python 3.8+
+- YOLOv8 (Ultralytics)
+- OpenCV
+- Numpy
+- 其它依赖见 `requirements.txt`
 
-运行测试脚本：
-```bash
-python test_model.py
-```
+## 💡 贡献方式
 
-## ⚠️ 注意事项
+欢迎提交 Issue 或 Pull Request 改进本项目功能！
 
-- 📌 标注时保持方向一致性
-- 💾 使用正确的模型权重文件
-- 🚀 推荐使用GPU训练
-- 🔄 确认数据格式匹配
+## 📄 许可证
 
-## 📬 联系方式
+本项目采用 MIT 许可证，详情见 LICENSE 文件。
 
-[您的联系方式]
+## ✨ 作者 agacila@outlook.com
+
+- [hihihiddssa](https://github.com/hihihiddssa)
+
+---
