@@ -18,15 +18,6 @@ YOLOv8-OBB-based object detection project, supporting detection and coordinate c
 
 ---
 
-## 🖼️ Screenshots / 项目截图
-
-> 请将项目截图添加到 `screenshots/` 目录，并在此引用。
-
-![Detection Example](screenshots/detection_example.png)
-![Grasp Point](screenshots/grasp_point.png)
-
----
-
 ## 🚀 Quick Start / 快速开始
 
 1. **Clone the repository / 克隆代码库**
